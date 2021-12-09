@@ -8,7 +8,7 @@ def main():
 
     network = Network([784, 30, 10])
 
-    epochs = 10
+    epochs = 5
     mini_batch_size = 10
     eta = 3.0
 
@@ -20,8 +20,8 @@ def main():
     )
 
     # Validate model accuracy
-    accuracy_baseline = 93.0
-    accuracy_tolerance = 1.2
+    accuracy_baseline = 0.93
+    accuracy_tolerance = 0.012
     total = len(test_data)
     correct = network.evaluate(test_data)
     accuracy = round(correct/total, 2)
@@ -29,6 +29,7 @@ def main():
     print("Expected: {} +- {}".format(accuracy_baseline, accuracy_tolerance))
 
     if accuracy < accuracy_baseline - accuracy_tolerance:
+        print("Accuracy too low!")
         sys.exit(1)
 
 
